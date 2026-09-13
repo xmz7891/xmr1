@@ -14,7 +14,36 @@
   --green:#3fb950; --green-bg:rgba(63,185,80,.12);
   --red:#f85149; --red-bg:rgba(248,81,73,.12);
   --amber:#d29922; --amber-bg:rgba(210,153,34,.14);
+  --header-bg:rgba(13,17,23,.86);
+  --input-bg:#0d1117; --btn-bg:#21262d; --placeholder:#6e7681;
+  --row-hover:#1a2029; --row-line:#1b2129;
+  --grid-line:#1c2129; --axis-line:#30363d;
+  --tooltip-bg:#1c2129; --tooltip-border:#30363d;
+  --pointer:#8b949e; --flash:rgba(88,166,255,.14);
+  --primary-a:rgba(88,166,255,.26); --primary-a0:rgba(88,166,255,.02);
+  --green-a:rgba(63,185,80,.22);   --green-a0:rgba(63,185,80,.02);
+  --vol-bar:rgba(139,148,158,.4);
   --radius:10px;
+}
+/* 浅色主题：跟随系统设置自动切换 */
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f6f8fa; --card:#ffffff; --card-hover:#f0f3f6; --border:#d8dee4;
+    --text:#1f2328; --sub:#656d76; --icon:#6e7781;
+    --primary:#0969da; --primary-bg:rgba(9,105,218,.1);
+    --green:#1a7f37; --green-bg:rgba(26,127,55,.1);
+    --red:#cf222e; --red-bg:rgba(207,34,46,.08);
+    --amber:#9a6700; --amber-bg:rgba(154,103,0,.1);
+    --header-bg:rgba(246,248,250,.88);
+    --input-bg:#ffffff; --btn-bg:#f3f4f6; --placeholder:#8c959f;
+    --row-hover:#f3f6fa; --row-line:#eef1f5;
+    --grid-line:#eef1f5; --axis-line:#d8dee4;
+    --tooltip-bg:#ffffff; --tooltip-border:#d8dee4;
+    --pointer:#656d76; --flash:rgba(9,105,218,.12);
+    --primary-a:rgba(9,105,218,.2);  --primary-a0:rgba(9,105,218,.02);
+    --green-a:rgba(26,127,55,.18);   --green-a0:rgba(26,127,55,.02);
+    --vol-bar:rgba(101,109,118,.35);
+  }
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -24,22 +53,22 @@ a{color:var(--primary);text-decoration:none}
 a:hover{text-decoration:underline}
 
 /* ===== 顶栏 ===== */
-header{background:rgba(13,17,23,.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20}
+header{background:var(--header-bg);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20}
 .hd{max-width:1200px;margin:0 auto;padding:11px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:700;letter-spacing:.4px}
 .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--primary);box-shadow:0 0 10px rgba(88,166,255,.75)}
 .logo small{font-size:12px;font-weight:400;color:var(--sub);margin-left:2px}
 .hd .spacer{flex:1}
 .addr-box{display:flex;align-items:center;gap:6px;flex:1 1 320px;max-width:640px}
-.addr-box input{flex:1;min-width:0;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;outline:none;background:#0d1117;color:var(--text);font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
-.addr-box input::placeholder{color:#6e7681}
+.addr-box input{flex:1;min-width:0;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;outline:none;background:var(--input-bg);color:var(--text);font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.addr-box input::placeholder{color:var(--placeholder)}
 .addr-box input:focus{border-color:var(--primary);box-shadow:0 0 0 2px rgba(88,166,255,.15)}
-.btn{padding:8px 14px;border:1px solid var(--border);background:#21262d;border-radius:8px;font-size:13px;color:var(--text);cursor:pointer;white-space:nowrap;transition:all .15s}
+.btn{padding:8px 14px;border:1px solid var(--border);background:var(--btn-bg);border-radius:8px;font-size:13px;color:var(--text);cursor:pointer;white-space:nowrap;transition:all .15s}
 .btn:hover{border-color:var(--primary);color:var(--primary)}
 .btn.primary{background:var(--primary);border-color:var(--primary);color:#0d1117;font-weight:600}
 .btn.primary:hover{background:#79b8ff;color:#0d1117}
 .btn:disabled{opacity:.5;cursor:not-allowed}
-select.btn{padding:7px 8px;background:#21262d;color:var(--text)}
+select.btn{padding:7px 8px;background:var(--btn-bg);color:var(--text)}
 #autoTag{font-size:12px;color:var(--sub);white-space:nowrap}
 #clock{font-size:12px;color:var(--sub);font-variant-numeric:tabular-nums}
 
@@ -77,23 +106,23 @@ select.btn{padding:7px 8px;background:#21262d;color:var(--text)}
 
 /* 行情 */
 .mkt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0 28px;margin-top:4px}
-.mkt{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #1b2129;font-size:13px}
+.mkt{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--row-line);font-size:13px}
 .mkt .k{color:var(--sub);font-size:12px}
 .mkt .v{font-weight:600;font-variant-numeric:tabular-nums}
 
 /* ===== Tabs & Table ===== */
 .tabs{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
 .tab{padding:6px 13px;border:1px solid transparent;border-radius:8px;font-size:12px;background:transparent;color:var(--sub);cursor:pointer;transition:all .18s;font-family:inherit}
-.tab:hover{color:var(--text);background:#1c2129}
+.tab:hover{color:var(--text);background:var(--card-hover)}
 .tab.active{background:var(--primary-bg);color:var(--primary);border-color:rgba(88,166,255,.35);font-weight:600}
 .tab .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:1px;background:var(--green);animation:breath 2.2s ease-in-out infinite}
-.tab.offtab .dot{background:#6e7681;animation:none}
+.tab.offtab .dot{background:var(--placeholder);animation:none}
 .table-wrap{overflow-x:auto;margin-top:12px}
 table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
 th{background:transparent;text-align:left;padding:9px 14px;color:var(--sub);font-weight:600;border-bottom:1px solid var(--border);white-space:nowrap;font-size:12px}
-td{padding:11px 14px;border-bottom:1px solid #1b2129;font-variant-numeric:tabular-nums;white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--row-line);font-variant-numeric:tabular-nums;white-space:nowrap}
 tr:last-child td{border-bottom:none}
-tr:hover td{background:#1a2029}
+tr:hover td{background:var(--row-hover)}
 td .offline-mark{color:var(--red)}
 .empty{padding:30px;text-align:center;color:var(--sub);font-size:13px}
 
@@ -101,7 +130,7 @@ td .offline-mark{color:var(--red)}
 @keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes breath{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.78)}}
 @keyframes spin{to{transform:rotate(360deg)}}
-@keyframes flashBg{0%{background-color:rgba(88,166,255,0)}35%{background-color:rgba(88,166,255,.14)}100%{background-color:rgba(88,166,255,0)}}
+@keyframes flashBg{0%{background-color:rgba(88,166,255,0)}35%{background-color:var(--flash)}100%{background-color:rgba(88,166,255,0)}}
 .cards .card{animation:riseIn .5s cubic-bezier(.22,.61,.36,1) both}
 .cards .card:nth-child(2){animation-delay:.05s}
 .cards .card:nth-child(3){animation-delay:.10s}
@@ -121,6 +150,9 @@ td .offline-mark{color:var(--red)}
 #workerTbody{transition:opacity .16s}
 #workerTbody.switching{opacity:.35}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* demo 标签（主题跟随） */
+#demoTag{font-size:11px;color:var(--amber);background:var(--amber-bg);padding:1px 8px;border-radius:10px;font-weight:600}
 
 /* ===== K 线入口 & K 线页 ===== */
 .kline-entry{max-width:1200px;margin:12px auto 0;display:flex;justify-content:center}
@@ -391,6 +423,21 @@ function setVal(el, txt){
   animateText(el, txt);
   if(el.textContent !== txt) flash(el);
 }
+/* 读取当前主题（CSS 变量）供图表取色；深浅色跟随系统自动切换 */
+function themeVars(){
+  var cs = getComputedStyle(document.documentElement);
+  function g(n){ return cs.getPropertyValue(n).trim(); }
+  return {
+    primary: g("--primary"), green: g("--green"), red: g("--red"), amber: g("--amber"),
+    text: g("--text"), sub: g("--sub"), placeholder: g("--placeholder"),
+    gridLine: g("--grid-line"), axisLine: g("--axis-line"),
+    tooltipBg: g("--tooltip-bg"), tooltipBorder: g("--tooltip-border"),
+    pointer: g("--pointer"), primaryBg: g("--primary-bg"),
+    primaryA: g("--primary-a"), primaryA0: g("--primary-a0"),
+    greenA: g("--green-a"), greenA0: g("--green-a0"),
+    volBar: g("--vol-bar")
+  };
+}
 function relTime(sec){
   sec = Number(sec)||0;
   if(sec < 60) return Math.max(sec,0).toFixed(0) + " 秒前";
@@ -619,6 +666,7 @@ function renderChart(){
     return;
   }
   if(!chart) chart = echarts.init(el);
+  var tv = themeVars();
   var data = S.chart.map(function(p){ return [fmtDate(p.ts), (p.hs2||p.hs||0)/1000]; });
   var option = {
     backgroundColor: "transparent",
@@ -627,8 +675,9 @@ function renderChart(){
     animationDurationUpdate: 600,
     animationEasing: "cubicOut",
     animationEasingUpdate: "linear",
-    tooltip: { trigger:"axis", triggerOn:"click", renderMode:"richText", confine:true,
-      backgroundColor:"#1c2129", borderColor:"#30363d", textStyle:{ color:"#e6edf3", fontSize:12 },
+    tooltip: { trigger:"axis", triggerOn:"mousemove", renderMode:"richText", confine:true,
+      backgroundColor: tv.tooltipBg, borderColor: tv.tooltipBorder, textStyle:{ color: tv.text, fontSize:12 },
+      axisPointer: { type:"line", lineStyle:{ color: tv.pointer, type:"dashed", width:1 } },
       formatter: function(params){
         if(!params || !params.length) return "";
         var p = params[0];
@@ -636,19 +685,19 @@ function renderChart(){
       } },
     grid: { left:8, right:16, top:30, bottom:8, containLabel:true },
     xAxis: { type:"category", data: data.map(function(d){return d[0];}),
-      boundaryGap:false, axisLine:{lineStyle:{color:"#30363d"}},
-      axisLabel:{ color:"#8b949e", fontSize:11, hideOverlap:true } },
-    yAxis: { type:"value", name:"KH/s", nameTextStyle:{color:"#6e7681"},
-      splitLine:{lineStyle:{color:"#1c2129"}}, axisLabel:{ color:"#8b949e", fontSize:11 } },
+      boundaryGap:false, axisLine:{lineStyle:{color: tv.axisLine}},
+      axisLabel:{ color: tv.sub, fontSize:11, hideOverlap:true } },
+    yAxis: { type:"value", name:"KH/s", nameTextStyle:{color: tv.placeholder},
+      splitLine:{lineStyle:{color: tv.gridLine}}, axisLabel:{ color: tv.sub, fontSize:11 } },
     dataZoom: [ { type:"inside", start:0, end:100 } ],
     series: [{
       type:"line", smooth:true, symbol:"none", data: data,
-      lineStyle:{ width:2, color:"#58a6ff" },
+      lineStyle:{ width:2, color: tv.primary },
       areaStyle:{ color: new echarts.graphic.LinearGradient(0,0,0,1,[
-        { offset:0, color:"rgba(88,166,255,.26)" }, { offset:1, color:"rgba(88,166,255,.02)" } ]) },
+        { offset:0, color: tv.primaryA }, { offset:1, color: tv.primaryA0 } ]) },
       markLine:{ silent:true, symbol:"none",
-        data:[{ yAxis: avgHash(), lineStyle:{ color:"#d29922", type:"dashed", width:1 },
-          label:{ formatter:"均值 "+avgHash().toFixed(2)+" KH/s", color:"#d29922", fontSize:11 } }] }
+        data:[{ yAxis: avgHash(), lineStyle:{ color: tv.amber, type:"dashed", width:1 },
+          label:{ formatter:"均值 "+avgHash().toFixed(2)+" KH/s", color: tv.amber, fontSize:11 } }] }
     }]
   };
   chart.setOption(option, true);
@@ -669,6 +718,7 @@ function renderPriceChart(){
     return;
   }
   if(!priceChart) priceChart = echarts.init(el);
+  var tv = themeVars();
   var fx = S.priceChart.fx > 0;
   var data = S.priceChart.pts.map(function(p){ return [fmtDate(p.ts), fx ? p.cny : p.usd]; });
   var first = S.priceChart.pts[0], last = S.priceChart.pts[S.priceChart.pts.length-1];
@@ -682,8 +732,9 @@ function renderPriceChart(){
     animationDurationUpdate: 600,
     animationEasing: "cubicOut",
     animationEasingUpdate: "linear",
-    tooltip: { trigger:"axis", triggerOn:"click", renderMode:"richText", confine:true,
-      backgroundColor:"#1c2129", borderColor:"#30363d", textStyle:{ color:"#e6edf3", fontSize:12 },
+    tooltip: { trigger:"axis", triggerOn:"mousemove", renderMode:"richText", confine:true,
+      backgroundColor: tv.tooltipBg, borderColor: tv.tooltipBorder, textStyle:{ color: tv.text, fontSize:12 },
+      axisPointer: { type:"line", lineStyle:{ color: tv.pointer, type:"dashed", width:1 } },
       formatter: function(params){
         if(!params || !params.length) return "";
         var p = params[0];
@@ -691,19 +742,19 @@ function renderPriceChart(){
       } },
     grid: { left:8, right:16, top:30, bottom:8, containLabel:true },
     xAxis: { type:"category", data: data.map(function(d){return d[0];}),
-      boundaryGap:false, axisLine:{lineStyle:{color:"#30363d"}},
-      axisLabel:{ color:"#8b949e", fontSize:11, hideOverlap:true } },
-    yAxis: { type:"value", name: fx ? "CNY" : "USD", nameTextStyle:{color:"#6e7681"}, scale:true,
-      splitLine:{lineStyle:{color:"#1c2129"}}, axisLabel:{ color:"#8b949e", fontSize:11 } },
+      boundaryGap:false, axisLine:{lineStyle:{color: tv.axisLine}},
+      axisLabel:{ color: tv.sub, fontSize:11, hideOverlap:true } },
+    yAxis: { type:"value", name: fx ? "CNY" : "USD", nameTextStyle:{color: tv.placeholder}, scale:true,
+      splitLine:{lineStyle:{color: tv.gridLine}}, axisLabel:{ color: tv.sub, fontSize:11 } },
     dataZoom: [ { type:"inside", start:0, end:100 } ],
     series: [{
       type:"line", smooth:true, symbol:"none", data: data,
-      lineStyle:{ width:2, color:"#3fb950" },
+      lineStyle:{ width:2, color: tv.green },
       areaStyle:{ color: new echarts.graphic.LinearGradient(0,0,0,1,[
-        { offset:0, color:"rgba(63,185,80,.22)" }, { offset:1, color:"rgba(63,185,80,.02)" } ]) },
+        { offset:0, color: tv.greenA }, { offset:1, color: tv.greenA0 } ]) },
       markLine:{ silent:true, symbol:"none",
-        data:[{ yAxis: lv, lineStyle:{ color:"#d29922", type:"dashed", width:1 },
-          label:{ formatter:"当前 " + lv.toFixed(2) + (fx?" ¥":" $"), color:"#d29922", fontSize:11 } }] }
+        data:[{ yAxis: lv, lineStyle:{ color: tv.amber, type:"dashed", width:1 },
+          label:{ formatter:"当前 " + lv.toFixed(2) + (fx?" ¥":" $"), color: tv.amber, fontSize:11 } }] }
     }]
   };
   priceChart.setOption(option, true);
@@ -740,6 +791,7 @@ function renderKline(){
     return;
   }
   if(!klineChart) klineChart = echarts.init(el);
+  var tv = themeVars();
   var raw = klineCache[activeCoin];
   if(!raw || !raw.length){
     el.innerHTML = '<div class="empty">' + (isDemo ? "演示模式仅内置演示数据" : "K 线数据加载失败（需访问 api.gateio.ws）") + '</div>';
@@ -761,8 +813,9 @@ function renderKline(){
     backgroundColor: "transparent",
     animation: true, animationDuration: 700, animationDurationUpdate: 500,
     animationEasing: "cubicOut", animationEasingUpdate: "linear",
-    tooltip: { trigger:"axis", triggerOn:"click", renderMode:"richText", confine:true,
-      backgroundColor:"#1c2129", borderColor:"#30363d", textStyle:{ color:"#e6edf3", fontSize:12 },
+    tooltip: { trigger:"axis", triggerOn:"mousemove", renderMode:"richText", confine:true,
+      backgroundColor: tv.tooltipBg, borderColor: tv.tooltipBorder, textStyle:{ color: tv.text, fontSize:12 },
+      axisPointer: { type:"line", lineStyle:{ color: tv.pointer, type:"dashed", width:1 } },
       formatter: function(params){
         if(!params || !params.length) return "";
         var p = params[0];
@@ -775,26 +828,26 @@ function renderKline(){
     ],
     xAxis: [
       { type:"category", data:dates, gridIndex:0, boundaryGap:true,
-        axisLine:{lineStyle:{color:"#30363d"}}, axisLabel:{ show:false } },
+        axisLine:{lineStyle:{color: tv.axisLine}}, axisLabel:{ show:false } },
       { type:"category", data:dates, gridIndex:1, boundaryGap:true,
-        axisLine:{lineStyle:{color:"#30363d"}}, axisLabel:{ color:"#8b949e", fontSize:10, hideOverlap:true } }
+        axisLine:{lineStyle:{color: tv.axisLine}}, axisLabel:{ color: tv.sub, fontSize:10, hideOverlap:true } }
     ],
     yAxis: [
-      { gridIndex:0, scale:true, splitLine:{lineStyle:{color:"#1c2129"}}, axisLabel:{ color:"#8b949e", fontSize:10 } },
+      { gridIndex:0, scale:true, splitLine:{lineStyle:{color: tv.gridLine}}, axisLabel:{ color: tv.sub, fontSize:10 } },
       { gridIndex:1, splitLine:{show:false}, axisLabel:{ show:false } }
     ],
     dataZoom: [
       { type:"inside", xAxisIndex:[0,1], start:0, end:100 },
       { type:"slider", xAxisIndex:[0,1], bottom:0, height:16,
-        borderColor:"#30363d", backgroundColor:"#161b22",
-        fillerColor:"rgba(88,166,255,.12)", handleStyle:{ color:"#58a6ff" },
-        textStyle:{ color:"#8b949e", fontSize:10 }, dataBackground:{ lineStyle:{color:"#30363d"}, areaStyle:{color:"rgba(88,166,255,.08)"} } }
+        borderColor: tv.axisLine, backgroundColor: tv.tooltipBg,
+        fillerColor: tv.primaryBg, handleStyle:{ color: tv.primary },
+        textStyle:{ color: tv.sub, fontSize:10 }, dataBackground:{ lineStyle:{color: tv.axisLine}, areaStyle:{color: tv.primaryBg} } }
     ],
     series: [
       { name:"K线", type:"candlestick", data:ohlc, xAxisIndex:0, yAxisIndex:0,
-        itemStyle:{ color:"#3fb950", color0:"#f85149", borderColor:"#3fb950", borderColor0:"#f85149" } },
+        itemStyle:{ color: tv.green, color0: tv.red, borderColor: tv.green, borderColor0: tv.red } },
       { name:"成交量", type:"bar", data:vols, xAxisIndex:1, yAxisIndex:1,
-        itemStyle:{ color:"rgba(139,148,158,.4)" }, barWidth:"60%" }
+        itemStyle:{ color: tv.volBar }, barWidth:"60%" }
     ]
   };
   klineChart.setOption(option, true);
@@ -889,7 +942,7 @@ function loadDemo(){
 /* ---------- 初始化 ---------- */
 function init(){
   $("demoTag").textContent = isDemo ? " 演示模式" : "";
-  $("demoTag").style.cssText = isDemo ? "display:inline;font-size:11px;color:#d29922;background:rgba(210,153,34,.14);padding:1px 8px;border-radius:10px;font-weight:600" : "";
+  if(isDemo){ $("demoTag").classList.remove("hidden"); }
   var saved = localStorage.getItem("skypool_addr");
   $("addr").value = saved || DEFAULT_ADDR;
 
@@ -901,6 +954,14 @@ function init(){
     b.addEventListener("click", function(){ renderTable(b.getAttribute("data-t")); });
   });
   $("autoSel").addEventListener("change", function(){ startAuto(); });
+
+  /* 系统深浅色变化 → 重渲染图表（HTML/CSS 自动跟随） */
+  if(window.matchMedia){
+    var mq = window.matchMedia("(prefers-color-scheme: light)");
+    function onTheme(){ renderAll(); }
+    if(mq.addEventListener) mq.addEventListener("change", onTheme);
+    else if(mq.addListener) mq.addListener(onTheme);
+  }
 
   /* K 线页：币种 tab + 入口/返回 + 路由 */
   var kt = $("coinTabs");
